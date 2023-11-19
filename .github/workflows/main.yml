@@ -23,7 +23,8 @@ jobs:
           access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
           organization: arun-test
           environment: AwsOIDC
-          keys: '$.properties.environmentVariables.value.*.value'
+        #   keys: '$.properties.environmentVariables.value.*.value'
+          keys: '$.properties.environmentVariables.*'
 
       - name: Use the output
         run: |
