@@ -1,27 +1,29 @@
-# ...
+
 
 name: pulumi-esc-read
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-  build-java:
-    
+  esc_read:
     runs-on: ubuntu-latest
 
     steps:
-        - name: Retrieve values
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Retrieve values
         uses: jaxxstorm/action-pulumi-esc@main
         id: esc
         with:
-            access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-            organization: aruntest
-            environment: AwsOIDC
-            keys: '$.properties.environmentVariables.value.EXAMPLE_SETTING.value'
-        - name: Use the output
-        run: |
-            echo "The extracted values are: ${{ steps.esc.outputs.result }}"
+          access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          organization: arun-test
+          environment: AwsOIDC
+          keys: '$.properties.environmentVariables.value.EXAMPLE_SETTING.value'
+
+      - name: Use the output
+        run: echo "The extracted values are: ${{ steps.esc.outputs.result }}"
