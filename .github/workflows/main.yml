@@ -26,4 +26,5 @@ jobs:
           keys: '$.properties.environmentVariables.value.EXAMPLE_SETTING.value'
 
       - name: Use the output
-        run: echo "The extracted values are: ${{ steps.esc.outputs.result }}"
+        run: |
+            echo "The extracted values are: ${{ steps.esc.outputs.result }}"
