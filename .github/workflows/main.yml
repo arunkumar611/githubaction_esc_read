@@ -23,7 +23,7 @@ jobs:
           access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
           organization: arun-test
           environment: AwsOIDC
-          keys: '$.properties.environmentVariables.value.AWS_ACCESS_KEY_ID.value'
+          keys: '$.properties.environmentVariables.value.*.value'
 
       - name: Use the output
         run: |
